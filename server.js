@@ -8,10 +8,12 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-app.use(cors({ origin: process.env.CORS_ORIGIN }));
+app.use(cors({ origin: process.env.CORS_ORIGIN || '*' }));
 app.use(express.json());
 
-app.get("/health", (req, res) => res.json({ status: "✅ Server running" }));
+app.get("/", (req, res) => {
+  res.send("✅ Deadside API root alive");
+});
 app.use("/api", routes);
 
 app.listen(PORT, () => {
