@@ -8,18 +8,18 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-// Middleware
+// Middlewares
 app.use(cors({ origin: process.env.CORS_ORIGIN || "*" }));
 app.use(express.json());
 
-// Health Check (direct root-level route)
+// Health Check
 app.get("/health", (req, res) => res.json({ status: "✅ Server running" }));
 
-// API Routes
-app.use("/api", routes);
-
-// Root test
+// Root check
 app.get("/", (req, res) => res.send("✅ Deadside API root alive"));
+
+// Mount API routes
+app.use("/api", routes);
 
 app.listen(PORT, () => {
   console.log(`🧠 API live on port ${PORT}`);
