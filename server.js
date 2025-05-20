@@ -12,8 +12,8 @@ app.use(cors({ origin: process.env.CORS_ORIGIN }));
 app.use(express.json());
 
 app.use(cors({
-  origin: "*", // Replace * with frontend URL for production
-  methods: ["GET", "POST"],
+  origin: "https://deadside-frontend.onrender.com",
+  credentials: true
 }));
 
 
